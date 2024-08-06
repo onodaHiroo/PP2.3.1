@@ -8,6 +8,7 @@ import web.model.User;
 import web.service.UserService;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
 @Transactional
 public class UserDaoImpl implements UserDao{
 
+    @PersistenceContext
     private EntityManager entityManager;
 
     @Autowired
@@ -26,7 +28,7 @@ public class UserDaoImpl implements UserDao{
 
     @Override
     public void addNewUser(User user) {
-
+        entityManager.persist(user);
     }
 
     @Override
@@ -41,6 +43,11 @@ public class UserDaoImpl implements UserDao{
 
     @Override
     public void removeUserById(long id) {
+        entityManager.remove(show(id));
+    }
 
+    @Override
+    public User show(long id){
+        return entityManager.find(User.class, id);
     }
 }

@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addNewUser(User user) {
-        //userDao.addNewUser(user);
+        userDao.addNewUser(user);
     }
 
     @Override
@@ -35,6 +35,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void removeUserById(long id) {
-        //post kakoyta
+        userDao.removeUserById(id);
     }
 }
