@@ -25,7 +25,7 @@ public class UserController {
         return "index";
     }
 
-    @PostMapping(value = "/addNewUserButton")
+    @GetMapping(value = "/addNewUserButton")
     public String addNewUser(){
         return "redirect:/new";
     }
@@ -46,13 +46,14 @@ public class UserController {
         return "edit";
     }
 
-    @PostMapping(value = "/edit")
+    @PostMapping(value = "/update")
     public String edit(@ModelAttribute("user") User user){
-        return "edit";
+        userService.updateUser(user);
+        return "redirect:/";
     }
 
-    @GetMapping(value = "/{id}/delete")
-    public String delete(@RequestParam(name = "id") long id){
+    @GetMapping(value = "/delete")
+    public String delete(@RequestParam(value = "id") long id){
         userService.removeUserById(id);
         return "redirect:/";
     }

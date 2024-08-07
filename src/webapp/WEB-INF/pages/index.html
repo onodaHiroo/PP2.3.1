@@ -21,13 +21,13 @@
         <td th:text="${user.getEmail()}"></td>
         <td th:text="${user.getPassword()}"></td>
         <td>
-            <form th:action="@{/edit}" th:method="post" th:object="${user}">
-                <button type="submit">Edit</button>
+            <form th:action="@{/edit}" th:method="get">
+                <button type="submit" th:name="id" th:value="${user.getId()}">Edit</button>
             </form>
         </td>
         <td>
-            <form th:action="@{/{id}/delete (id=${user.getId()})}" th:method="get">
-                <button type="submit">Delete</button>
+            <form th:action="@{/delete}" th:method="get" >
+                <button type="submit" th:name="id" th:value="${user.getId()}">Delete</button>
             </form>
         </td>
 
@@ -36,7 +36,8 @@
 
 <br/>
 
-<form th:action="@{/addNewUserButton}" th:method="post">
+<form th:action="@{/addNewUserButton}" th:method="get">
     <button type="submit">Add new user</button>
-</form></body>
+</form>
+</body>
 </html>
