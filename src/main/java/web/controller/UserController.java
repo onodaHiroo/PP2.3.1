@@ -26,34 +26,34 @@ public class UserController {
     }
 
     @GetMapping(value = "/addNewUserButton")
-    public String addNewUser(){
+    public String addNewUser() {
         return "redirect:/new";
     }
 
     @GetMapping(value = "/new")
-    public String newPerson(@ModelAttribute("user") User user){
+    public String newPerson(@ModelAttribute("user") User user) {
         return "new";
     }
 
     @PostMapping(value = "/new")
-    public String create(@ModelAttribute("user") User user){
+    public String create(@ModelAttribute("user") User user) {
         userService.addNewUser(user);
         return "redirect:/";
     }
 
     @GetMapping(value = "/edit")
-    public String updatePerson(@ModelAttribute("user") User user){
+    public String updatePerson(@ModelAttribute("user") User user) {
         return "edit";
     }
 
     @PostMapping(value = "/update")
-    public String edit(@ModelAttribute("user") User user){
+    public String edit(@ModelAttribute("user") User user) {
         userService.updateUser(user);
         return "redirect:/";
     }
 
     @GetMapping(value = "/delete")
-    public String delete(@RequestParam(value = "id") long id){
+    public String delete(@RequestParam(value = "id") long id) {
         userService.removeUserById(id);
         return "redirect:/";
     }

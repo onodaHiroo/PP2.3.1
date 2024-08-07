@@ -60,7 +60,7 @@ public class DBConfig {
     }
 
     @Bean
-    public PlatformTransactionManager platformTransactionManager (){
+    public PlatformTransactionManager platformTransactionManager() {
         JpaTransactionManager manager = new JpaTransactionManager();
         manager.setEntityManagerFactory(getEntityManagerFactory().getObject());
         return manager;
