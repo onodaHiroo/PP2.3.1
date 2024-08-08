@@ -42,7 +42,9 @@ public class UserController {
     }
 
     @GetMapping(value = "/edit")
-    public String updatePerson(@ModelAttribute("user") User user) {
+    public String updatePerson(@RequestParam(value = "id") long id, ModelMap modelMap) {
+        modelMap.addAttribute("user", userService.show(id));
+        System.out.println(modelMap);
         return "edit";
     }
 
